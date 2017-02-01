@@ -45,7 +45,7 @@ class Artist(models.Model):
     """
 
     name = models.CharField(max_length=100, default='')
-    year_formed = models.DateTimeField()
+    year_formed = models.IntegerField()
     
     def __str__(self):
         """
