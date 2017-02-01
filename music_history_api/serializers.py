@@ -24,8 +24,16 @@ class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = ('name', 'year_formed',)
-        # depth = 2
 
+
+class AlbumSerializer(serializers.ModelSerializer):
+    """
+    Class for data serialization of a specific Model: Album
+    """
+
+    class Meta:
+        model = Album
+        fields = ('title', 'genre', 'artist',)
 
 
 class SongSerializer(serializers.ModelSerializer):
