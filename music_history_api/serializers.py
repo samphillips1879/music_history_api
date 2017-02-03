@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 
 
 
-class GenreSerializer(serializers.ModelSerializer):
+class GenreSerializer(serializers.HyperlinkedModelSerializer):
     """
     Class for data serialization of a specific Model: Genre
     """
 
     class Meta:
         model = Genre
-        fields = ('name',)
+        fields = ('url', 'name',)
         # depth = 2
 
 
@@ -23,7 +23,7 @@ class ArtistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Artist
-        fields = ('name', 'year_formed',)
+        fields = ('url', 'name', 'year_formed',)
 
 
 class AlbumSerializer(serializers.ModelSerializer):
@@ -33,7 +33,8 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = ('title', 'genre', 'artist',)
+        fields = ('url', 'title', 'genre', 'artist',)
+        depth = 1
 
 
 class SongSerializer(serializers.ModelSerializer):
@@ -44,3 +45,4 @@ class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = ('url', 'title', 'duration', 'genre', 'artist', 'album',)
+        depth = 1
